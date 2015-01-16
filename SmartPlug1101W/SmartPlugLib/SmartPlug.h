@@ -3,13 +3,13 @@
 
 #include <string>
 #include <list>
-
+#include <qglobal.h>
 
 class SmartPlug
 {
     private:
-        int id;
-        int port;
+        quint16 id;
+        quint16 port;
         std::string landingPage;
         std::string userName;
         std::string password;
@@ -32,10 +32,10 @@ class SmartPlug
         void setUserName(const std::string &value);
         std::string getLandingPage() const;
         void setLandingPage(const std::string &value);
-        int getPort() const;
-        void setPort(int value);
-        int getId() const;
-        void setId(int value);
+        quint16 getPort() const;
+        void setPort(quint16 value);
+        quint16 getId() const;
+        void setId(quint16 value);
 };
 
 #endif // SMARTPLUG_H

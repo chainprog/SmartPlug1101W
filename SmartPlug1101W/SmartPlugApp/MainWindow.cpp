@@ -1,6 +1,9 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 #include "../SmartPlugLib/SmartPlug.h"
+#include "../SmartPlugLib/DeviceFinder.h"
+#include <QNetworkInterface>
+#include <QList>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -34,4 +37,15 @@ void MainWindow::on_btnSearchDevices_clicked()
     ui->listView->edit(index);
 
     std::list<SmartPlug*> plugs;
+
+    DeviceFinder *dvf = new DeviceFinder(54520, 20560);
+
+    QNetworkInterface *inter = new QNetworkInterface();
+    QList<QNetworkInterface> lst = inter->allInterfaces();
+    for(int i = 0; i < lst.size(); ++i) {
+        for(int j = 0; j < lst.at(i).addressEntries().size(); ++j) {
+           dvf->findDevices(lst.at(i).addressEntries().at(j));
+        }
+
+    }
 }

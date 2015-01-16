@@ -6,18 +6,18 @@
 class IPEndPoint
 {
 private:
-    QNetworkAddressEntry *endPointAddress;
-    long receivePort;
+    QNetworkAddressEntry endPointAddress;
+    quint16 receivePort;
 
 public:
 
     IPEndPoint();
     ~IPEndPoint();
 
-    IPEndPoint(QNetworkAddressEntry *endPointAddress, long receivePort);
+    IPEndPoint(QNetworkAddressEntry endPointAddress, quint16 receivePort);
 
-    QNetworkAddressEntry* getEndPointAddress();
-    long getReceivePort();
+    QNetworkAddressEntry getEndPointAddress();
+    quint16 getReceivePort();
 };
 
 #endif // IPENDPOINT_H

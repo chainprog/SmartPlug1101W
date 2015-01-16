@@ -25,22 +25,22 @@ void DeviceFinder::setTimeoutPeriod(int value)
     timeoutPeriod = value;
 }
 
-long DeviceFinder::getListeningPort() const
+quint16 DeviceFinder::getListeningPort() const
 {
     return listeningPort;
 }
 
-void DeviceFinder::setListeningPort(long value)
+void DeviceFinder::setListeningPort(quint16 value)
 {
     listeningPort = value;
 }
 
-long DeviceFinder::getSendingPort() const
+quint16 DeviceFinder::getSendingPort() const
 {
     return sendingPort;
 }
 
-void DeviceFinder::setSendingPort(long value)
+void DeviceFinder::setSendingPort(quint16 value)
 {
     sendingPort = value;
 }
@@ -54,27 +54,28 @@ DeviceFinder::~DeviceFinder()
 
 }
 
-DeviceFinder::DeviceFinder(long sendingPort, long listeningPort)
+DeviceFinder::DeviceFinder(quint16 sendingPort, quint16 listeningPort)
 {
     DeviceFinder(sendingPort, listeningPort, 45000);
 }
 
-DeviceFinder::DeviceFinder(long sendingPort, long listeningPort, int timeoutPeriod)
+DeviceFinder::DeviceFinder(quint16 sendingPort, quint16 listeningPort, int timeoutPeriod)
 {
     this->setSendingPort(sendingPort);
     this->setListeningPort(listeningPort);
     this->setTimeoutPeriod(timeoutPeriod);
 }
 
-void DeviceFinder::findDevices(QNetworkAddressEntry *address)
+void DeviceFinder::findDevices(const QNetworkAddressEntry &address)
 {
     setIsStillSearching(true);
     std::list<SmartPlug *> smartPlugs;
 
+
     UdpClient *listenClient = new UdpClient(sendingPort, address);
     IPEndPoint *endPoint = new IPEndPoint(address, listeningPort);
 
-    QByteArray bytesToSend;
+    QByteArray *bytesToSend = new QByteArray("test");
 
     listenClient->send(bytesToSend, endPoint);
 

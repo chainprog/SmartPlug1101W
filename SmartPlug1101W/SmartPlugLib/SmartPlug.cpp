@@ -1,5 +1,5 @@
 #include "SmartPlug.h"
-
+#include <qglobal.h>
 
 std::string SmartPlug::getName() const
 {
@@ -61,22 +61,22 @@ void SmartPlug::setLandingPage(const std::string &value)
     landingPage = value;
 }
 
-int SmartPlug::getPort() const
+quint16 SmartPlug::getPort() const
 {
     return port;
 }
 
-void SmartPlug::setPort(int value)
+void SmartPlug::setPort(quint16 value)
 {
     port = value;
 }
 
-int SmartPlug::getId() const
+quint16 SmartPlug::getId() const
 {
     return id;
 }
 
-void SmartPlug::setId(int value)
+void SmartPlug::setId(quint16 value)
 {
     id = value;
 }

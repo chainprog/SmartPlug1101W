@@ -6,13 +6,13 @@
 class DeviceFinder
 {
 private:
-    long sendingPort;
-    long listeningPort;
+    quint16 sendingPort;
+    quint16 listeningPort;
     int timeoutPeriod;
     bool isStillSearching;
 
-    void setSendingPort(long value);
-    void setListeningPort(long value);
+    void setSendingPort(quint16 value);
+    void setListeningPort(quint16 value);
     void setTimeoutPeriod(int value);
     void setIsStillSearching(bool value);
 
@@ -20,19 +20,19 @@ public:
     DeviceFinder();
     ~DeviceFinder();
 
-    DeviceFinder(long sendingPort, long listeningPort);
+    DeviceFinder(quint16 sendingPort, quint16 listeningPort);
 
-    DeviceFinder(long sendingPort, long listeningPort, int timeoutPeriod);
+    DeviceFinder(quint16 sendingPort, quint16 listeningPort, int timeoutPeriod);
 
-    void findDevices(QNetworkAddressEntry *address);
+    void findDevices(const QNetworkAddressEntry &address);
 
     bool getIsStillSearching() const;
 
     int getTimeoutPeriod() const;
 
-    long getListeningPort() const;
+    quint16 getListeningPort() const;
 
-    long getSendingPort() const;
+    quint16 getSendingPort() const;
 
 };
 

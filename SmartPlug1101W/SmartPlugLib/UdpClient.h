@@ -11,7 +11,7 @@ class UdpClient : public QObject
     Q_OBJECT
 
 private:
-    QNetworkAddressEntry *hostAddress;
+    QNetworkAddressEntry hostAddress;
     QUdpSocket *sendSocket;
     QUdpSocket *receiveSocket;
     long sendingPort;
@@ -22,9 +22,9 @@ private slots:
 public:
     UdpClient();
     ~UdpClient();
-    UdpClient(long sendingPort, QNetworkAddressEntry *senderAddress);
+    UdpClient(long sendingPort, QNetworkAddressEntry senderAddress);
 
-    void send(QByteArray bytesToSend, IPEndPoint *endPoint);
+    void send(QByteArray *bytesToSend, IPEndPoint *endPoint);
 };
 
 #endif // UDPCLIENT_H

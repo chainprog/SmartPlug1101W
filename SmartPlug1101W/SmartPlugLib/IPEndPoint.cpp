@@ -11,16 +11,16 @@ IPEndPoint::~IPEndPoint()
 
 }
 
-IPEndPoint::IPEndPoint(QNetworkAddressEntry *endPointAddress, long destionationPort)
+IPEndPoint::IPEndPoint(QNetworkAddressEntry endPointAddress, quint16 destionationPort)
 {
     this->receivePort = destionationPort;
     this->endPointAddress = endPointAddress;
 }
 
-long IPEndPoint::getReceivePort() {
+quint16 IPEndPoint::getReceivePort() {
     return receivePort;
 }
 
-QNetworkAddressEntry* IPEndPoint::getEndPointAddress() {
+QNetworkAddressEntry IPEndPoint::getEndPointAddress() {
     return endPointAddress;
 }
