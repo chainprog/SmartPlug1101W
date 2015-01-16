@@ -14,12 +14,16 @@ DEFINES += SMARTPLUGLIB_LIBRARY
 
 SOURCES += \
     SmartPlug.cpp \
-    DeviceFinder.cpp
+    DeviceFinder.cpp \
+    UdpClient.cpp \
+    IPEndPoint.cpp
 
 HEADERS +=\
         smartpluglib_global.h \
     SmartPlug.h \
-    DeviceFinder.h
+    DeviceFinder.h \
+    UdpClient.h \
+    IPEndPoint.h
 
 unix {
     target.path = /usr/lib

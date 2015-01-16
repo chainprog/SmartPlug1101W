@@ -1,7 +1,7 @@
 #ifndef DEVICEFINDER_H
 #define DEVICEFINDER_H
 
-#include <QHostAddress>
+#include <QNetworkAddressEntry>
 
 class DeviceFinder
 {
@@ -24,7 +24,7 @@ public:
 
     DeviceFinder(long sendingPort, long listeningPort, int timeoutPeriod);
 
-    void findDevices(QHostAddress *address);
+    void findDevices(QNetworkAddressEntry *address);
 
     bool getIsStillSearching() const;
 

@@ -1,5 +1,8 @@
 #include "DeviceFinder.h"
-#include <SmartPlug.h>
+#include <UdpClient.h>
+#include <QNetworkAddressEntry>
+#include <IPEndPoint.h>
+#include "SmartPlug.h"
 #include <list>
 
 bool DeviceFinder::getIsStillSearching() const
@@ -63,12 +66,18 @@ DeviceFinder::DeviceFinder(long sendingPort, long listeningPort, int timeoutPeri
     this->setTimeoutPeriod(timeoutPeriod);
 }
 
-void DeviceFinder::findDevices(QHostAddress *address)
+void DeviceFinder::findDevices(QNetworkAddressEntry *address)
 {
     setIsStillSearching(true);
     std::list<SmartPlug *> smartPlugs;
 
-    //address->setAddress();
+    UdpClient *listenClient = new UdpClient(sendingPort, address);
+    IPEndPoint *endPoint = new IPEndPoint(address, listeningPort);
 
+    QByteArray bytesToSend;
+
+    listenClient->send(bytesToSend, endPoint);
+
+    setIsStillSearching(false);
 }
 
